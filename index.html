@@ -107,7 +107,7 @@
             $('#search').val($('#search').val() + String.fromCharCode(unicode));
 
             renderResults(search($('#search').val()));
-
+             $('#search').focus();
         }
         ;
 
@@ -115,6 +115,7 @@
             $('#search').val($('#search').val().substr(0, $('#search').val().length - 1 ));
 
             renderResults(search($('#search').val()));
+            $('#search').focus();
         }
 
     </script>
