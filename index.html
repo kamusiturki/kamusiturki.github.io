@@ -87,12 +87,19 @@
                 return resultList;
 
             for (var i = 0; i < words.length; i++) {
-                if (words[i].Osm.startsWith(searchText)) {
-                    resultList.push(words[i]);
-
-                    if (resultList.length == 50)
-                        return resultList;
+                if (searchText.codePointAt(0) > 1000){//unicode değeri 1000'in üzerindeyse arap harfleri ile arama yapılıyordur.
+                    if (words[i].Osm.startsWith(searchText)) {
+                        resultList.push(words[i]);
+                    }
                 }
+                else{
+                    if (words[i].Latin.toLocaleLowerCase('tr').startsWith(searchText.toLocaleLowerCase('tr'))) {
+                        resultList.push(words[i]);  
+                    } 
+                }
+
+                if (resultList.length == 50)
+                        return resultList;                
             }
 
             return resultList;
